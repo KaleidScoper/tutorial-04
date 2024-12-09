@@ -7,6 +7,7 @@ CXXFLAGS = -std=c++11 -O2 -Wall
 # Directories
 INCLUDE_DIR = /root/codes/miracl-core/include
 LIBRARY_DIR = /root/codes/miracl-core/lib
+HEADERS_DIR = /root/codes/miracl-exp/tutorial-04/src
 
 # Source files
 SRC_DIR = /root/codes/miracl-exp/tutorial-04/src
@@ -22,10 +23,10 @@ BIN = $(OBJ_DIR)/main
 all: $(BIN)
 
 $(BIN): $(OBJ_FILES)
-	$(CXX) $(CXXFLAGS) -o $(BIN) $(OBJ_FILES) -L$(LIBRARY_DIR) -lmiracl
+	$(CXX) $(CXXFLAGS) -o $(BIN) $(OBJ_FILES) -I$(INCLUDE_DIR) -I$(HEADERS_DIR) -L$(LIBRARY_DIR) -lmiracl
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -I$(HEADERS_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
