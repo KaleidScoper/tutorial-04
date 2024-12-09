@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -I../../miracl-core/include -L../../miracl-core/lib -lmiracl
+CFLAGS = -Iinclude -I../../miracl-core/include -L../../miracl-core/lib -lmiracl
 SRC = src/
 BUILD = build/
 
