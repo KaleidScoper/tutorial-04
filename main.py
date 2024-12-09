@@ -1,4 +1,3 @@
-#主函数
 import ca
 import verifier
 import attester

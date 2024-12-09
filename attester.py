@@ -1,4 +1,5 @@
 #示证者的功能
+
 import utils
 
 def attest(aik_keypair):
