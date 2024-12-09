@@ -14,19 +14,19 @@ OBJ_DIR = /root/codes/miracl-exp/tutorial-04/bin
 SRC_FILES = main.cpp ca.cpp prover.cpp verifier.cpp
 
 # Object files
-OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
+OBJ_FILES = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 # Output binary
-BIN = main
+BIN = $(OBJ_DIR)/main
 
 all: $(BIN)
 
 $(BIN): $(OBJ_FILES)
-	$(CXX) $(CXXFLAGS) -o $(OBJ_DIR)/$(BIN) $(OBJ_FILES) -L$(LIBRARY_DIR) -lmiracl
+	$(CXX) $(CXXFLAGS) -o $(BIN) $(OBJ_FILES) -L$(LIBRARY_DIR) -lmiracl
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
 	rm -f $(OBJ_DIR)/*.o
-	rm -f $(OBJ_DIR)/$(BIN)
+	rm -f $(BIN)
