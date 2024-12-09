@@ -1,27 +1,32 @@
-// 示证者的代码
+#include "prover.h"
 
-#include "utils.h"
+Prover::Prover() {
+    miracl *mip = mirsys(1000, 0);
+    SK_P = mirvar(0);
+    PK_P = epoint_init();
+    PK_AI = epoint_init();
+}
 
-int main() {
-    init_miracl();
+Prover::~Prover() {
+    mirkill(SK_P);
+    epoint_free(PK_P);
+    epoint_free(PK_AI);
+}
 
-    // 加载CA公钥
-    epoint *PK_CA = load_public_key("../keys/CA_pub.txt");
+void Prover::registerWithCA(CA &ca) {
+    // Prover generates key pair and sends to CA
+    big q, K;
+    epoint *temp = epoint_init();
+    drand(K, q);
+    ecurve_mult(g, K, PK_P, MR_PROJECTIVE);
+    ca.registerProver(PK_P, SK_P, sigma);
+}
 
-    // 模拟示证者生成AIK密钥
-    csprng rng;
-    big SK_AIK = mirvar(0);
-    epoint *PK_AIK = epoint_init();
-    ecurve curve(/* curve parameters */);
-    generate_keypair(rng, SK_AIK, PK_AIK, &curve);
-
-    // 签名
-    char signature[64];
-    sign_data(SK_AIK, PK_AIK->X, signature);
-
-    // 保存AIK公钥
-    save_keypair("../keys/AIK_pub.txt", "../keys/AIK_priv.txt", SK_AIK, PK_AIK);
-
-    cout << "Prover: AIK generated and signed. Data saved in 'keys/' directory." << endl;
-    return 0;
+void Prover::generateAIK() {
+    // Generate AIK
+    big q, K;
+    epoint *temp = epoint_init();
+    drand(K, q);
+    ecurve_mult(g, K, PK_AI, MR_PROJECTIVE);
+    sign(SK_P, PK_AI, sigma_AIK);
 }

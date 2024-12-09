@@ -1,18 +1,32 @@
-CC = g++
-CFLAGS = -Iinclude -I../../miracl-core/include -L../../miracl-core/lib -lmiracl
-SRC = src/
-BUILD = build/
+# Makefile for Miracl Privacy CA Remote Attestation Project
 
-all: ca prover verifier
+# Compiler and flags
+CXX = g++
+CXXFLAGS = -std=c++11 -O2 -Wall
 
-ca: $(SRC)ca.cpp $(SRC)utils.cpp
-	$(CC) $(CFLAGS) -o $(BUILD)ca $(SRC)ca.cpp $(SRC)utils.cpp
+# Directories
+INCLUDE_DIR = /root/codes/miracl-core/include
+LIBRARY_DIR = /root/codes/miracl-core/lib
 
-prover: $(SRC)prover.cpp $(SRC)utils.cpp
-	$(CC) $(CFLAGS) -o $(BUILD)prover $(SRC)prover.cpp $(SRC)utils.cpp
+# Source files
+SRC_DIR = ./src
+OBJ_DIR = ./bin
+SRC_FILES = main.cpp ca.cpp prover.cpp verifier.cpp
 
-verifier: $(SRC)verifier.cpp $(SRC)utils.cpp
-	$(CC) $(CFLAGS) -o $(BUILD)verifier $(SRC)verifier.cpp $(SRC)utils.cpp
+# Object files
+OBJ_FILES = $(SRC_FILES:%.cpp=%.o)
+
+# Output binary
+BIN = main
+
+all: $(BIN)
+
+$(BIN): $(OBJ_FILES)
+	$(CXX) $(CXXFLAGS) -o $(OBJ_DIR)/$(BIN) $(OBJ_FILES) -L$(LIBRARY_DIR) -lmiracl
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	$(CXX) $(CXXFLAGS) -I$(INCLUDE_DIR) -c $< -o $@
 
 clean:
-	rm -rf $(BUILD)*
+	rm -f $(OBJ_DIR)/*.o
+	rm -f $(OBJ_DIR)/$(BIN)
