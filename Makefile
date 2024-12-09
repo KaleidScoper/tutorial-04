@@ -9,8 +9,8 @@ INCLUDE_DIR = /root/codes/miracl-core/include
 LIBRARY_DIR = /root/codes/miracl-core/lib
 
 # Source files
-SRC_DIR = ./src
-OBJ_DIR = ./bin
+SRC_DIR = /root/codes/miracl-exp/tutorial-04/src
+OBJ_DIR = /root/codes/miracl-exp/tutorial-04/bin
 SRC_FILES = main.cpp ca.cpp prover.cpp verifier.cpp
 
 # Object files
