@@ -14,4 +14,4 @@
  ```bash
  git clone https://github.com/KaleidScoper/tutorial-04.git
  ```
- 2. 浏览器访问http://您的服务器地址:您的服务器端口/
+ 2. 浏览器访问http://您的服务器地址:您的服务器端口/tutorial-04/index.php
