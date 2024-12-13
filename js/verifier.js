@@ -6,9 +6,9 @@ function startVerification() {
     const signatureAIK = 100; // AIK签名（示例）
 
     if (verifySignature(caPublicKey, proverPublicKeyAIK, signatureAIK)) {
-        console.log("Verification successful");
+        console.log("验证成功");
     } else {
-        console.log("Verification failed");
+        console.log("验证失败");
     }
 }
 
