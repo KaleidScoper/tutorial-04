@@ -10,9 +10,9 @@ function registerProver() {
     // 示证者用CA的私钥签署AIK的公钥
     const signatureAIK = signData(privateKeyP, publicKeyAIK);
 
-    console.log("Prover's Public Key:", publicKeyP);
-    console.log("AIK Public Key:", publicKeyAIK);
-    console.log("AIK Signature:", signatureAIK);
+    console.log("示证者私钥:", publicKeyP);
+    console.log("AIK 公钥:", publicKeyAIK);
+    console.log("AIK 签名:", signatureAIK);
 }
 
 function signData(privateKey, data) {

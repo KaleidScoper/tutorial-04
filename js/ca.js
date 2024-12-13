@@ -4,7 +4,7 @@ function startCA() {
   const publicKeyCA = generatePublicKey(privateKeyCA);
 
   // 保存CA的公钥
-  console.log("CA Public Key:", publicKeyCA);
+  console.log("CA 公钥:", publicKeyCA);
 }
 
 function generatePrivateKey() {
