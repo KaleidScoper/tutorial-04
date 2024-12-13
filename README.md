@@ -15,3 +15,5 @@
  git clone https://github.com/KaleidScoper/tutorial-04.git
  ```
  2. 浏览器访问http://您的服务器地址:您的服务器端口/tutorial-04/index.html
+
+ 3. 打开浏览器控制台，然后点击按钮观察输出。
