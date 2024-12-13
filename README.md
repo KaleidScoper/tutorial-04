@@ -1,7 +1,7 @@
 # tutorial-04
  安徽大学《可信计算实验课》第三次实验源码。
 
-# 使用方法
+# 使用方法（重写中，暂不可用）
  1. 在您的设备下载本项目，或者使用下面的命令克隆：
  ```sh
  git clone https://github.com/KaleidScoper/tutorial-04.git
