@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy CA 模拟</title>
-  <link rel="stylesheet" href="/public/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trusted Computing Demo</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <h1>Privacy CA 模拟</h1>
-  <div id="controls">
-    <button id="initCA">初始化 CA</button>
-    <button id="registerProver">注册示证者</button>
-    <button id="issueCert">颁发 AIK 证书</button>
-    <button id="remoteAttest">远程证明</button>
-  </div>
-  <div id="output"></div>
-  <script src="/public/js/main.js"></script>
+    <h1>Trusted Computing Demo</h1>
+    <div id="ca-interface">
+        <h2>CA Interface</h2>
+        <button onclick="startCA()">启动CA</button>
+    </div>
+    <div id="prover-interface">
+        <h2>Prover Interface</h2>
+        <button onclick="registerProver()">注册示证者</button>
+    </div>
+    <div id="verifier-interface">
+        <h2>Verifier Interface</h2>
+        <button onclick="startVerification()">启动验证</button>
+    </div>
+    <script src="js/ca.js"></script>
+    <script src="js/prover.js"></script>
+    <script src="js/verifier.js"></script>
 </body>
 </html>
